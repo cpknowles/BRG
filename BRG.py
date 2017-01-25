@@ -9,6 +9,8 @@ from cslvr   import *
 
   Obtain correct surface for flow to occur
     split into subdomains to allow mainflow to have different slope from Loket?
+
+    TEST CHANGEssss
 """
 
 #######################################################################
@@ -17,7 +19,7 @@ from cslvr   import *
 
 #Read in Mesh from gmsh .xml file
 mesh1    = Mesh("2dmesh.xml")
-
+mesh2 = Mesh()
 coor = mesh1.coordinates()
 boundary_parts = MeshFunction('size_t', mesh1, mesh1.topology().dim()-1)
 #directory for results
