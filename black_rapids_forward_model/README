@@ -1,0 +1,20 @@
+This folder contains the requisite files for running a forward model of Black Rapids Glacier with a first-order stress balance scheme.  This requires several datsets:
+
+surface mass balance: from a model by C. Kienholz
+dhdt: from DEM differencing between 2010 and 2013
+outline: RGI (?)
+bed: mass conservation method of Brinkerhoff, informed with thickness from Gades (1993) (see Cryosphere Discuss "How accurate are estimates of glacier ice thickness? Results from ITMIX, the Ice Thickness Models Intercomparison eXperiment").  Note that the method was not able to simultaneously satisfy thickness and surface elevation constraints, regardless of choices in basal sliding coefficients and other free parameters.  Because surface elevations are more available and reliable, these were prioritized.  
+
+The model is presently configured to run from an initial guess involving the present day surface elevation.  Since the model is not perfect, this will generate a transient signal.  Also note that Black Rapids is severely out of balance, and running the model forward with actual smb, rather than effective mass balance (adot - dhdt) will lead to a significant and immediate retreat.  The model is by design close to steady state if effective mass balance is used.
+
+The folder also contains a meshing utility.  If gmsh is installed, run build_geo.py to generate a new mesh.  Parameters can be adjusted according to preferred cell size and level of boundary detail.
+
+The model can be run in parallel, which offers a near linear increase in speed (at least up to four processors, which is what I tested).  To do this, run the model with
+
+mpirun -np 4 python black_rapids_depth_integrated.py
+
+Please direct any questions to me at dbrinkerhoff@alaska.edu
+
+
+
+
